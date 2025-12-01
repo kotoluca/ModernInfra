@@ -1,0 +1,20 @@
+name: PR Unit Tests
+
+# Trigger only on Pull Requests
+on: [pull_request]
+
+jobs:
+  run-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run Unit Tests Only
+        # This command points specifically to the 'unit' folder
+        run: python -m unittest discover tests/unit
